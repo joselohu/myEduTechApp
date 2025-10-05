@@ -23,15 +23,13 @@ const UserCard = async ({
   };
 
   return (
-    <div className="rounded-2xl odd:bg-lamaPurple even:bg-lamaYellow p-4 flex-1 min-w-[130px]">
+    <div className="rounded-2xl odd:bg-lightGreen even:bg-lightYellow text-white p-4 flex-1 min-w-[130px]">
       <div className="flex justify-between items-center">
-        <span className="text-[10px] bg-white px-2 py-1 rounded-full text-green-600">
-          2024/25
-        </span>
-        <Image src="/more.png" alt="" width={20} height={20} />
+
+        
       </div>
-      <h1 className="text-2xl font-semibold my-4">{data}</h1>
-      <h2 className="text-sm font-medium text-gray-500">{typeLabels[type]}</h2>
+      <h1 className="text-2xl text-white font-semibold my-4 text-center">{data}</h1>
+      <h2 className="text-sm text-white font-medium text-gray-500 text-center">{typeLabels[type]}</h2>
     </div>
   );
 };

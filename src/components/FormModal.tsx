@@ -112,12 +112,7 @@ const FormModal = ({
   relatedData,
 }: FormContainerProps & { relatedData?: any }) => {
   const size = type === "create" ? "w-8 h-8" : "w-7 h-7";
-  const bgColor =
-    type === "create"
-      ? "bg-lamaYellow"
-      : type === "update"
-      ? "bg-lamaSky"
-      : "bg-lamaPurple";
+  const bgColor = "bg-darkBrown";
 
   const [open, setOpen] = useState(false);
 

@@ -8,8 +8,13 @@ import "react-toastify/dist/ReactToastify.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "EduTech - Aministración Escolar",
+  title: "EduTech - Administración Escolar",
   description: "Next.js Administración Escolar",
+  icons: {
+    icon: '/logo.png',
+    shortcut: '/logo.png',
+    apple: '/logo.png',
+  },
 };
 
 export default function RootLayout({
