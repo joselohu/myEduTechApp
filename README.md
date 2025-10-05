@@ -1,5 +1,7 @@
 # 🎓 CoreAppEduTech - Sistema de Gestión Educativa
 
+[Documentacion EduTech.pdf](https://github.com/user-attachments/files/22450008/Documentacion.EduTech.pdf)
+
 ## 📋 Descripción
 
 **CoreAppEduTech** es un sistema integral de gestión educativa desarrollado con Next.js 14, diseñado para facilitar la administración de instituciones educativas. El sistema permite gestionar estudiantes, profesores, padres, clases, materias, exámenes, tareas y asistencias de manera eficiente y escalable.
@@ -284,18 +286,3 @@ Si encuentras algún problema o tienes preguntas:
 1. Revisa la [documentación](./docs/)
 2. Busca en los [issues existentes](https://github.com/joselohu/eduTechApp/issues)
 3. Crea un nuevo issue si es necesario
-
-## 👨‍💻 Autor
-
-**Jose Luis** - [GitHub](https://github.com/joselohu)
-
-## 🙏 Agradecimientos
-
-- Next.js por el excelente framework
-- Clerk por la solución de autenticación
-- Prisma por el ORM intuitivo
-- Tailwind CSS por el sistema de estilos
-
----
-
-⭐ Si este proyecto te fue útil, considera darle una estrella en GitHub
