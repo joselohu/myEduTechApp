@@ -1,28 +1,68 @@
-# 🐳 Documentación de Docker
+# 🐳 Documentación Completa de Docker - CoreAppEduTech
 
 ## Introducción
 
-**CoreAppEduTech** utiliza Docker para containerizar la aplicación y sus dependencias, proporcionando un entorno de desarrollo y producción consistente y reproducible.
+CoreAppEduTech utiliza Docker para proporcionar un entorno de desarrollo y producción consistente, reproducible y escalable. Esta documentación cubre todos los aspectos de la containerización del sistema educativo.
+
+## 🎯 Objetivos de la Containerización
+
+### Beneficios Implementados
+- **Consistencia de Entorno**: Mismo comportamiento en desarrollo, testing y producción
+- **Aislamiento de Dependencias**: Cada servicio en su propio contenedor
+- **Escalabilidad Horizontal**: Fácil escalamiento de servicios específicos
+- **Portabilidad**: Funciona en cualquier sistema que soporte Docker
+- **Despliegue Simplificado**: Un solo comando para levantar toda la infraestructura
+- **Desarrollo Eficiente**: Configuración rápida para nuevos desarrolladores
 
 ## 🏗️ Arquitectura de Contenedores
 
-### Servicios Containerizados
-
+### Servicios Principales
 ```yaml
-# Estructura de servicios
-├── web (Next.js App)
-├── postgres (Base de Datos)
-└── redis (Cache - opcional)
+┌─────────────────────────────────────────────────────────────┐
+│                    STACK DE DESARROLLO                      │
+├─────────────────────────────────────────────────────────────┤
+│  ┌─────────────┐ ┌─────────────┐ ┌─────────────────────────┐ │
+│  │   Next.js   │ │ PostgreSQL  │ │        Redis            │ │
+│  │   Web App   │ │  Database   │ │        Cache            │ │
+│  │   :3000     │ │   :5432     │ │        :6379            │ │
+│  └─────────────┘ └─────────────┘ └─────────────────────────┘ │
+│  ┌─────────────┐ ┌─────────────┐ ┌─────────────────────────┐ │
+│  │  PgAdmin    │ │   Nginx     │ │     File Storage        │ │
+│  │    :5050    │ │   :80       │ │      Uploads            │ │
+│  │    (dev)    │ │   (prod)    │ │      Volume             │ │
+│  └─────────────┘ └─────────────┘ └─────────────────────────┘ │
+└─────────────────────────────────────────────────────────────┘
 ```
 
-### Diagrama de Arquitectura
+### Diagrama de Red
 ```mermaid
 graph TB
-    A[Cliente Web] --> B[Next.js Container]
-    B --> C[PostgreSQL Container]
-    B --> D[Redis Container]
-    C --> E[Volumen de Datos]
-    D --> F[Volumen de Cache]
+    A[Load Balancer] --> B[Nginx Container]
+    B --> C[Next.js App Container 1]
+    B --> D[Next.js App Container 2]
+    C --> E[PostgreSQL Container]
+    D --> E
+    C --> F[Redis Container]
+    D --> F
+    
+    G[PgAdmin Container] --> E
+    H[File Storage Volume] --> C
+    H --> D
+    
+    subgraph "Production Network"
+        B
+        C
+        D
+        E
+        F
+    end
+    
+    subgraph "Development Network"
+        G
+        I[Development Container]
+        I --> E
+        I --> F
+    end
 ```
 
 ## 📁 Archivos de Configuración
